@@ -28,6 +28,7 @@
 *.so.*
 *.dylib
 
+.git
 .idea
 .vscode
 cmake-build-debug
