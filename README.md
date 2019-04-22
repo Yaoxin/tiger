@@ -1,4 +1,4 @@
-# tiger （恍如猛虎卧荒丘）
+# tiger
 
 all code which I implemented.
 
