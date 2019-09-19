@@ -1,17 +1,9 @@
 # tiger
 
-all code which I implemented.
+梳理一些基础结构、算法、设计模式、网络、code snippet。
+近一年会不定期更新，希望构建自己的知识脉络。
 
-### 目录介绍
+编程语言以c/c++为主
 
-#### C 通用库[utils]
+具体细节查阅[这里](https://mubu.com/doc/3LZTTgP-Qg)
 
-- yx_log.h
-
-  多线程版本日志接口，支持写stderr和文件
-
-- yx_file.h
-
-  文件操作封装
-
-#### 数据结构实现[ds]
