@@ -15,9 +15,10 @@ DECLS_BEGIN
 
 typedef void *ElemType;
 
-typedef struct min_heap {
-    ElemType *data;
-    unsigned int n, a;
+typedef struct min_heap
+{
+  ElemType *data;
+  unsigned int n, a;
 } min_heap_t;
 
 static inline int min_heap_elem_greater(ElemType a, ElemType b);
@@ -40,8 +41,8 @@ static inline void min_heap_shift_up_(min_heap_t *s, unsigned hole_index, ElemTy
 
 static inline void min_heap_shift_down_(min_heap_t *s, unsigned hole_index, ElemType e);
 
-int min_heap_empty(min_heap_t *s) { return 0u == s->n; }
-
+int min_heap_empty(min_heap_t *s)
+{ return 0u == s->n; }
 
 DECLS_END
 #endif //TIGER_HEAP_H

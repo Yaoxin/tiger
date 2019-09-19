@@ -12,11 +12,12 @@
 extern "C" {
 #endif
 
-typedef enum LogLevel {
-    T_LOG_TRACE = 0,
-    T_LOG_DEBUG = 1,
-    T_LOG_INFO = 2,
-    T_LOG_ERR = 3
+typedef enum LogLevel
+{
+  T_LOG_TRACE = 0,
+  T_LOG_DEBUG = 1,
+  T_LOG_INFO = 2,
+  T_LOG_ERR = 3
 } LogLevel;
 
 #ifdef LOG_TRACE
@@ -56,7 +57,6 @@ do {                            \
 #define YX_INFO(fmt, ...)        YX_LOG(T_LOG_INFO, -1,        fmt, ## __VA_ARGS__)
 #define YX_ERR(fmt, ...)        YX_LOG(T_LOG_ERR, -1,        fmt, ## __VA_ARGS__)
 #define YX_SYS_ERR(log_errno, fmt, ...)    YG_LOG(T_LOG_ERR, log_errno,        fmt, ## __VA_ARGS__)
-
 
 #ifndef NO_DEBUG
 #define YX_TRACE(fmt, ...)    YX_LOG(T_LOG_TRACE, -1,    fmt, ## __VA_ARGS__)

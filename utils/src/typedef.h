@@ -32,14 +32,13 @@
 #define YX_MALLOC(p, size, type) \
 do {\
     p = (type)malloc(size);  \
-	if(p == NULL) { \
-		YX_ERR("malloc(%d) ERR(%s)", size, strerror(errno));  \
-	} else { \
-		memset(p, 0, size); \
-	} \
+    if(p == NULL) { \
+        YX_ERR("malloc(%d) ERR(%s)", size, strerror(errno));  \
+    } else { \
+        memset(p, 0, size); \
+    } \
 } while(0)
 
 #define YX_FREE(p) if(p != NULL) {free(p); p = NULL;}
-
 
 #endif //TIGER_TYPEDEF_H

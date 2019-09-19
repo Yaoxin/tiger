@@ -26,11 +26,13 @@ FILE *log_fp = NULL;
 
 static void _log_helper(int level, char *file, char *fun, int line, int log_errno, const char *fmt, va_list ap);
 
-void log_set_level(int level) {
+void log_set_level(int level)
+{
     log_level = level;
 }
 
-int log_set_log_prefix(const char *prefix) {
+int log_set_log_prefix(const char *prefix)
+{
     char dirname[512];
     char *rc = strrchr(prefix, '/');
     if (NULL == rc) {
@@ -58,7 +60,8 @@ int log_set_log_prefix(const char *prefix) {
     return 0;
 }
 
-static char *get_log_time(char *tm_str, unsigned int tm_size) {
+static char *get_log_time(char *tm_str, unsigned int tm_size)
+{
     time_t ms = time(NULL);
     struct tm *tm_obj = localtime(&ms);
 
@@ -68,7 +71,8 @@ static char *get_log_time(char *tm_str, unsigned int tm_size) {
     return tm_str;
 }
 
-static char *get_log_level(int level, char *msg, unsigned int msg_size) {
+static char *get_log_level(int level, char *msg, unsigned int msg_size)
+{
     if (level == T_LOG_TRACE) {
         snprintf(msg, msg_size, "TRACE");
     } else if (level == T_LOG_DEBUG) {
@@ -84,7 +88,8 @@ static char *get_log_level(int level, char *msg, unsigned int msg_size) {
     return msg;
 }
 
-static int is_need_reopen_logfile() {
+static int is_need_reopen_logfile()
+{
     if (log_fp == NULL) return 1;
 
     int filesize = yx_file_size_by_fd(fileno(log_fp));
@@ -98,7 +103,8 @@ static int is_need_reopen_logfile() {
     return 1;
 }
 
-static int open_logfile() {
+static int open_logfile()
+{
     pthread_mutex_t mutex;
     pthread_mutex_init(&mutex, NULL);
     pthread_mutex_lock(&mutex);
@@ -131,7 +137,8 @@ static int open_logfile() {
     return 0;
 }
 
-static void log_file_output(const char *msg) {
+static void log_file_output(const char *msg)
+{
     if (NULL == msg) return;
 
     int r = open_logfile();
@@ -144,14 +151,16 @@ static void log_file_output(const char *msg) {
     fflush(log_fp);
 }
 
-void log_output(int level, int log_errno, char *file, char *fun, int line, char *fmt, ...) {
+void log_output(int level, int log_errno, char *file, char *fun, int line, char *fmt, ...)
+{
     va_list ap;
     va_start(ap, fmt);
     _log_helper(level, file, fun, line, log_errno, fmt, ap);
     va_end(ap);
 }
 
-static void _log_helper(int level, char *file, char *fun, int line, int log_errno, const char *fmt, va_list ap) {
+static void _log_helper(int level, char *file, char *fun, int line, int log_errno, const char *fmt, va_list ap)
+{
     char tmstr[32];
     char level_str[16];
     char buf[1024];
