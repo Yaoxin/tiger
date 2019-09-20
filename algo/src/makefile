@@ -31,6 +31,7 @@ LD_FLAGS    := -lpthread -lm -lz -lrt
 #######################################
 TARGET     :=  libyx_algo.a
 OBJS       =    $(OUTPUT_DIR)/sort.o        \
+                ${OUTPUT_DIR}/search.o
 
 
 $(OUTPUT_DIR)/%.o: %.cpp
