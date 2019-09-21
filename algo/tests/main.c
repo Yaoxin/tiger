@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include "sort.h"
 #include "search.h"
+#include "permutation.h"
 
 typedef void (*func)(int *, int);
 
@@ -58,9 +59,19 @@ void test_string_match()
     printf("find index: %d\n", idx);
 }
 
+void test_permutation()
+{
+    lookup_permutation(5);
+    printf("----------------------------\n");
+    lexi_order_permutation(5);
+    printf("----------------------------\n");
+    johnson_trotter(5);
+}
+
 int main(int argc, char *argv[])
 {
     test_sort();
     test_string_match();
+    test_permutation();
 }
 
