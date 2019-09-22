@@ -27,6 +27,9 @@ void test_sort()
         bubble_sort,
         insert_sort,
         select_sort,
+        quick_sort,
+        merge_sort,
+        shell_sort,
     };
 
     int sort_fun_len = sizeof(sort_fun_map) / sizeof(sort_fun_map[0]);
