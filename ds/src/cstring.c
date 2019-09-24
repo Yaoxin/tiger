@@ -6,9 +6,9 @@
 
 #include <ctype.h>
 #include <stdio.h>
-#include <string.h>
+#include <cstring.h>
 #include <stdlib.h>
-#include "string.h"
+#include "cstring.h"
 
 #define BUFSIZE 100
 
