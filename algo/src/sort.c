@@ -22,7 +22,6 @@ void insert_sort(int v[], int n)
             s_swap(&v[j - 1], &v[j]);
         }
     }
-
 }
 
 //对较大规模并且无序的数据非常有效，是插入排序的升级版
