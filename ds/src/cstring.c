@@ -6,8 +6,8 @@
 
 #include <ctype.h>
 #include <stdio.h>
-#include <cstring.h>
 #include <stdlib.h>
+#include <string.h>
 #include "cstring.h"
 
 #define BUFSIZE 100
@@ -37,7 +37,7 @@ int get_word(char *word, int lim)
     while (isspace(c = getch()));
 
     if (c != EOF) {
-        *w++ = (char)c;
+        *w++ = (char) c;
     }
 
     if (!isalpha(c)) {
@@ -46,7 +46,7 @@ int get_word(char *word, int lim)
     }
 
     for (; --lim > 0; w++) {
-        *w = (char)getch();
+        *w = (char) getch();
         if (!isalnum(*w)) {
             ungetch(*w);
             break;
@@ -124,8 +124,9 @@ char *string_copy(char to[], const char from[])
     return ret;
 }
 
-char *string_dup(const char *s) {
-    char *p = (char *)calloc(1, strlen(s) + 1);
+char *string_dup(const char *s)
+{
+    char *p = (char *) calloc(1, strlen(s) + 1);
     if (p != NULL) {
         string_copy(p, s);
     }
