@@ -71,10 +71,25 @@ void test_permutation()
     johnson_trotter(5);
 }
 
+void test_search()
+{
+    int v[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int idx = interpolat_search(v, sizeof(v)/ sizeof(v[0]), 5);
+    printf("use interpolat_search, find index: %d\n", idx);
+
+    int v1[100] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int idx2 = fibonacci_search(v, 9, 8);
+    printf("use fibonacci_search, find index: %d\n", idx2);
+
+
+}
+
+
 int main(int argc, char *argv[])
 {
     test_sort();
     test_string_match();
     test_permutation();
+    test_search();
 }
 
