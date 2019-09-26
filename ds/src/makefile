@@ -31,9 +31,10 @@ LD_FLAGS    := -lpthread -lm -lz -lrt
 #######################################
 TARGET     :=  libyx_ds.a
 OBJS       =    $(OUTPUT_DIR)/adlist.o        \
-                ${OUTPUT_DIR}/cstring.o        \
+                ${OUTPUT_DIR}/cstring.o       \
                 ${OUTPUT_DIR}/dict.o          \
                 ${OUTPUT_DIR}/heap.o          \
+                ${OUTPUT_DIR}/darray.o        \
 
 
 $(OUTPUT_DIR)/%.o: %.cpp

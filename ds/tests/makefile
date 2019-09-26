@@ -19,7 +19,7 @@ CFLAGS 	:= $(INCLUDE_DIR) -g -DLOG_INFO -static
 LIB_DIR		:= -L.
 LIB_DIR     += -L../lib
 
-LD_FLAGS    := -lpthread -lyx_algo -lm -lz -lrt
+LD_FLAGS    := -lpthread -lyx_ds -lm -lz -lrt
 
 #######################################
 #  make
