@@ -35,6 +35,7 @@ OBJS       =    $(OUTPUT_DIR)/adlist.o        \
                 ${OUTPUT_DIR}/dict.o          \
                 ${OUTPUT_DIR}/heap.o          \
                 ${OUTPUT_DIR}/darray.o        \
+                ${OUTPUT_DIR}/stack.o         \
 
 
 $(OUTPUT_DIR)/%.o: %.cpp
