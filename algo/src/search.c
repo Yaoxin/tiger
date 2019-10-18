@@ -102,21 +102,3 @@ int fibonacci_search(int v[], int n, int k)
     return -1;
 }
 
-//子串匹配 暴力法
-int brute_force_string_match(const char *str1, const char *str2)
-{
-    size_t n = strlen(str1), m = strlen(str2);
-    int i, j;
-    for (i = 0; i <= n - m; i++) {
-        j = 0;
-        while (j < m && *(str1 + i + j) == *(str2 + j)) {
-            j++;
-            if (j == m) {
-                return i;
-            }
-        }
-    }
-
-    return -1;
-
-}

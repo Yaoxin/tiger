@@ -8,6 +8,7 @@
 #include "sort.h"
 #include "search.h"
 #include "permutation.h"
+#include "substring.h"
 
 typedef void (*func)(int *, int);
 
@@ -60,6 +61,10 @@ void test_string_match()
 {
     int idx = brute_force_string_match("NOBODY_NOTICED_HIM", "NOT");
     printf("find index: %d\n", idx);
+
+    int idy = kmp_string_match("NOBODY_NOTICED_HIM", "NOT");
+    printf("find index: %d\n", idy);
+
 }
 
 void test_permutation()
@@ -74,16 +79,14 @@ void test_permutation()
 void test_search()
 {
     int v[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-    int idx = interpolat_search(v, sizeof(v)/ sizeof(v[0]), 5);
+    int idx = interpolat_search(v, sizeof(v) / sizeof(v[0]), 5);
     printf("use interpolat_search, find index: %d\n", idx);
 
     int v1[100] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     int idx2 = fibonacci_search(v, 9, 8);
     printf("use fibonacci_search, find index: %d\n", idx2);
 
-
 }
-
 
 int main(int argc, char *argv[])
 {
@@ -91,5 +94,6 @@ int main(int argc, char *argv[])
     test_string_match();
     test_permutation();
     test_search();
+    return 0;
 }
 
