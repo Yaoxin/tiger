@@ -10,6 +10,7 @@
 #include <string.h>
 #include "darray.h"
 #include "stack.h"
+#include "queue.h"
 
 int total(void *ctx, void *data)
 {
@@ -95,27 +96,25 @@ void test_stack_2(char *str)
     char c;
     void *val;
     Stack *stack = stackCreate(NULL, NULL);
-    Stack *out_stack = stackCreate(NULL, NULL);
+    Queue *queue = queueCreate(NULL, NULL);
     while (*ptr != '\0') {
         c = *ptr++;
         if (isdigit(c)) {
-            stackPush(out_stack, (void *) c);
+            enqueue(queue, (void *) c);
         } else if (c == ' ' || c == '\t') {
             continue;
         } else if (c == '(') {
             stackPush(stack, (void *) c);
         } else if (c == ')') {
             while (stackTop(stack, &val) == OK && (char) val != '(') {
-                printf("current %c\n", (char) val);
-                stackPush(out_stack, val);
+                enqueue(queue, val);
                 stackPop(stack);
             }
-            printf("out %c\n", (char) val);
             stackPop(stack);
         } else {
             //当前符号优先级低于栈顶符号
             while (stackTop(stack, &val) == OK && prioraty(c, (char) val) == TRUE) {
-                stackPush(out_stack, val);
+                enqueue(queue, val);
                 stackPop(stack);
             }
             stackPush(stack, (void *) c);
@@ -125,32 +124,30 @@ void test_stack_2(char *str)
     while (stackLength(stack) > 0) {
         stackTop(stack, &val);
         if ((char) val != '(' && (char) val != ')') {
-            stackPush(out_stack, val);
+            enqueue(queue, val);
             stackPop(stack);
         }
     }
 
     char out[512] = {0};
     int i = 0;
-    while (stackLength(out_stack) > 0) {
-        stackTop(out_stack, &val);
+    while (queueLength(queue) > 0) {
+        dequeue(queue, &val);
         out[i++] = (char) val;
-        stackPop(out_stack);
     }
 
-    //TODO 再反转下即可
     out[i] = '\0';
     printf("%s\n", out);
 
     stackRelease(stack);
-    stackRelease(out_stack);
+    queueRelease(queue);
 
 }
 
 int main(int argc, char *argv[])
 {
-//    test_darray();
-//    test_stack();
+    test_darray();
+    test_stack();
     test_stack_2("9 + (3 - 1*7) * 3 + 10 /2");
 
     return 0;
