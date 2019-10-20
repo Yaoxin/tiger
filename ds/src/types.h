@@ -16,6 +16,10 @@
 extern "C" {
 #endif
 
+#ifndef BOOL
+#define BOOL    int
+#endif
+
 #ifndef TRUE
 #define TRUE            1
 #endif

@@ -4,45 +4,45 @@
  * @Date: 2019-04-21
  */
 
-//实现简单的堆和优先级队列，以及基于堆的排序
+// 最小堆实现
+// 以后做堆设计时需要根据存储的类型适当调整接口
 
-#include "typedef.h"
+#include "types.h"
 
 #ifndef TIGER_HEAP_H
 #define TIGER_HEAP_H
 
-DECLS_BEGIN
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 typedef void *ElemType;
 
-typedef struct min_heap
+typedef struct _minHeap
 {
   ElemType *data;
-  unsigned int n, a;
-} min_heap_t;
+  unsigned int size; //当前大小
+  unsigned int capacity; //当前容量
 
-static inline int min_heap_elem_greater(ElemType a, ElemType b);
+  int (*greater)(ElemType a, ElemType b);
+} minHeap;
 
-static inline int min_heap_empty(min_heap_t *s);
+#define minHeapSetGreaterMethod(h, m)   ((h)->greater = (m))
 
-static inline unsigned int min_heap_size(min_heap_t *s);
+static inline unsigned int minHeapSize(minHeap *heap);
+minHeap *minHeapCreate();
+void minHeapRelease(minHeap *heap);
+int minHeapTop(minHeap *heap, ElemType *val);
+int minHeapPush(minHeap *heap, ElemType val);
+int minHeapPop(minHeap *heap, ElemType *val);
 
-static inline ElemType min_heap_top(min_heap_t *s);
+unsigned int minHeapSize(minHeap *heap)
+{
+    return heap->size;
+}
 
-static inline int min_heap_reserve(min_heap_t *s, unsigned int n);
+#ifdef __cplusplus
+}
+#endif
 
-static inline int min_heap_push(min_heap_t *s, ElemType e);
-
-static inline ElemType min_heap_pop(min_heap_t *s);
-
-static inline int min_heap_erase(min_heap_t *s, ElemType e);
-
-static inline void min_heap_shift_up_(min_heap_t *s, unsigned hole_index, ElemType e);
-
-static inline void min_heap_shift_down_(min_heap_t *s, unsigned hole_index, ElemType e);
-
-int min_heap_empty(min_heap_t *s)
-{ return 0u == s->n; }
-
-DECLS_END
 #endif //TIGER_HEAP_H

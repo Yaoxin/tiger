@@ -37,6 +37,8 @@ OBJS       =    $(OUTPUT_DIR)/adlist.o        \
                 ${OUTPUT_DIR}/darray.o        \
                 ${OUTPUT_DIR}/stack.o         \
                 ${OUTPUT_DIR}/queue.o         \
+                ${OUTPUT_DIR}/heap.o          \
+                ${OUTPUT_DIR}/priority_queue.o \
 
 
 $(OUTPUT_DIR)/%.o: %.cpp

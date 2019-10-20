@@ -23,7 +23,7 @@ LD_FLAGS    := -lpthread -lyx_ds -lm -lz -lrt
 
 #######################################
 #  make
-TARGET     :=  main
+TARGET     :=  test_pri_queue
 OBJS 		=  $(addsuffix .o, ${TARGET})
 
 

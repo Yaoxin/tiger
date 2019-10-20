@@ -158,6 +158,6 @@ void bubble_sort(int v[], int n)
 
 void heap_sort(int v[], int n)
 {
-
+    //见ds/tests/heap_sort.c
 }
 
