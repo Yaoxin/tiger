@@ -6,27 +6,27 @@
 
 #include "priority_queue.h"
 
-int greater(ElemType a, ElemType b)
+int int_greater(ElemType a, ElemType b)
 {
-    if ((int)a > (int)b) {
+    if ((int) a > (int) b) {
         return 1;
     } else {
         return 0;
     }
 }
 
-int less(ElemType a, ElemType b)
+int int_lesser(ElemType a, ElemType b)
 {
-    if ((int)a < (int)b) {
+    if ((int) a < (int) b) {
         return 1;
     } else {
         return 0;
     }
 }
 
-int main(int argc, char *argv[])
+void test_priority_queue()
 {
-    PriorityQueue *queue = priorityQueueCreate(greater);
+    PriorityQueue *queue = priorityQueueCreate(int_greater);
     int i;
     int a[] = {10, 8, 12, 14, 6};
     int a_len = sizeof(a) / sizeof(a[0]);
@@ -41,5 +41,12 @@ int main(int argc, char *argv[])
     }
 
     printf("\n");
+
+    priorityQueueRelease(queue);
+}
+
+int main(int argc, char *argv[])
+{
+    test_priority_queue();
 }
 

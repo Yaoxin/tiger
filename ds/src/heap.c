@@ -13,7 +13,7 @@
 
 // 这里我们的实现heap(0, n-1) 存储在a[0] ~ a[n-1]中,实现起来也复杂一些
 // leftchild(i) = 2 *(i - 1) - 1
-// rightchild(i) = 2 * (i -1)
+// rightchild(i) = 2 * (i + 1)
 // parent(i) = (i - 1) / 2
 
 #include <stdio.h>
@@ -75,8 +75,8 @@ int minHeapTop(minHeap *heap, ElemType *val)
 
 void minHeapShiftUp_(minHeap *heap, unsigned int hole_index, ElemType val)
 {
-    unsigned int parent = hole_index == 0 ? 0 : (hole_index - 1) / 2;
-    while (parent && heap->greater(heap->data[parent], val)) {
+    unsigned int parent = (hole_index - 1) / 2;
+    while (hole_index && heap->greater(heap->data[parent], val)) {
         heap->data[hole_index] = heap->data[parent];
         hole_index = parent;
         parent = (hole_index - 1) / 2;
@@ -88,7 +88,7 @@ void minHeapShiftUp_(minHeap *heap, unsigned int hole_index, ElemType val)
 
 void minHeapShiftDown_(minHeap *heap, unsigned int hole_index, ElemType val)
 {
-    unsigned int min_child = 2 * (hole_index - 1);
+    unsigned int min_child = 2 * (hole_index + 1);
     while (min_child <= heap->size) {
         // 1. 如果min_child为size,则取a[size-1]。（堆的形状决定的--完全二叉树）
         // 2. 如果min_child <= size -1, 则比较a[min_child-1](左)和a[min_child]（右）,取小的那一个
@@ -100,7 +100,7 @@ void minHeapShiftDown_(minHeap *heap, unsigned int hole_index, ElemType val)
 
         heap->data[hole_index] = heap->data[min_child];
         hole_index = min_child;
-        min_child = 2 * (hole_index - 1);
+        min_child = 2 * (hole_index + 1);
     }
 
     //实际上就是heap->data[hole_index] = val啦！
