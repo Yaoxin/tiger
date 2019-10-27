@@ -30,6 +30,7 @@ int stackTop(Stack *stack, void **val);
 int stackPush(Stack *stack, void *val);
 int stackPop(Stack *stack);
 size_t stackLength(Stack *stack);
+BOOL stackEmpty(Stack *stack);
 
 #ifdef __cplusplus
 }

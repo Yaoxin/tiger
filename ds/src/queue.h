@@ -5,6 +5,7 @@
  */
 
 //循环队列实现
+//浪费一个空间，代表队列满状态
 
 #ifndef TIGER_QUEUE_H
 #define TIGER_QUEUE_H
@@ -32,6 +33,7 @@ void queueRelease(Queue *queue);
 int enqueue(Queue *queue, void *val);
 int dequeue(Queue *queue, void **val);
 size_t queueLength(Queue *queue);
+BOOL queueEmpty(Queue *queue);
 
 #ifdef __cplusplus
 }

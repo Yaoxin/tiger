@@ -64,3 +64,8 @@ size_t stackLength(Stack *stack)
     return stack->sp;
 }
 
+BOOL stackEmpty(Stack *stack)
+{
+    return stack->sp == 0u;
+}
+

@@ -64,3 +64,8 @@ size_t queueLength(Queue *queue)
 {
     return (queue->rear - queue->front + MAXSIZE) % MAXSIZE;
 }
+
+BOOL queueEmpty(Queue *queue)
+{
+    return queue->front == queue->rear;
+}
