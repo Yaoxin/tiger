@@ -6,6 +6,7 @@
 
 #include <stdio.h>
 #include "tree.h"
+#include "trie.h"
 
 int print_int(void *ctx, void *data)
 {
@@ -40,9 +41,25 @@ void test_tree()
     treeRelease(tree);
 }
 
+void test_trie_tree()
+{
+    TrieTree tree = trieTreeCreate();
+    insertString(tree, "hello");
+    insertString(tree, "helag");
+    insertString(tree, "aonondag");
+    BOOL found = searchString(tree, "hello");
+    printf("first found %d\n", found);
+    deleteString(tree, "hello");
+    found = searchString(tree, "hello");
+    printf("second found %d\n", found);
+    found = searchString(tree, "aonondag");
+    printf("three found %d\n", found);
+}
+
 int main(int argc, char *argv[])
 {
-    test_tree();
+//    test_tree();
+    test_trie_tree();
     return 0;
 }
 
