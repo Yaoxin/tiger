@@ -39,6 +39,7 @@ int darrayIndex(DArray *thiz, size_t index, void **data);
 int darraySetIndex(DArray *thiz, size_t index, void *data);
 size_t darraySearchKey(DArray *thiz, DataCompareFunc cmp, void *ctx);
 int darrayForeach(DArray *thiz, DataVisitFunc visit, void *ctx);
+int darraySort(DArray *thiz, SortFunc sort, DataCompareFunc cmp);
 
 #ifdef __cplusplus
 }

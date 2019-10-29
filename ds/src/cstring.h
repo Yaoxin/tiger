@@ -17,6 +17,7 @@ char *string_copy(char to[], const char from[]);
 char *string_dup(const char *s);
 int string_reverse(char *s);
 int string_trim(char s[]);
+void string_split(char s[], const char *sep, char **dest, int *num);
 int atoi_m(const char s[]);
 double atof_m(const char s[]);
 void itoa(int n, char s[]);

@@ -41,6 +41,7 @@ OBJS       =    $(OUTPUT_DIR)/adlist.o        \
                 ${OUTPUT_DIR}/priority_queue.o \
                 ${OUTPUT_DIR}/tree.o          \
                 ${OUTPUT_DIR}/trie.o          \
+                ${OUTPUT_DIR}/huffman_tree.o  \
 
 
 $(OUTPUT_DIR)/%.o: %.cpp

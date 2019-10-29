@@ -17,7 +17,7 @@ static void darrayDestoryData(DArray *thiz, void *data)
 
 DArray *darrayCreate(DataDestroyFunc data_destroy, void *ctx)
 {
-    DArray *thiz = (DArray*) calloc(1, sizeof(DArray));
+    DArray *thiz = (DArray *) calloc(1, sizeof(DArray));
     if (thiz != NULL) {
         thiz->data = NULL;
         thiz->size = 0;
@@ -125,6 +125,7 @@ int darrayDelete(DArray *thiz, size_t index)
 
     return OK;
 }
+
 int darrayIndex(DArray *thiz, size_t index, void **data)
 {
     return_val_if_fail(thiz != NULL && data != NULL && index < thiz->size,
@@ -135,6 +136,7 @@ int darrayIndex(DArray *thiz, size_t index, void **data)
     return OK;
 
 }
+
 int darraySetIndex(DArray *thiz, size_t index, void *data)
 {
     return_val_if_fail(thiz != NULL && index < thiz->size,
@@ -144,6 +146,7 @@ int darraySetIndex(DArray *thiz, size_t index, void *data)
 
     return OK;
 }
+
 size_t darraySearchKey(DArray *thiz, DataCompareFunc cmp, void *ctx)
 {
     size_t i = 0;
@@ -158,6 +161,7 @@ size_t darraySearchKey(DArray *thiz, DataCompareFunc cmp, void *ctx)
 
     return i;
 }
+
 int darrayForeach(DArray *thiz, DataVisitFunc visit, void *ctx)
 {
     size_t i = 0;
@@ -169,5 +173,11 @@ int darrayForeach(DArray *thiz, DataVisitFunc visit, void *ctx)
     }
 
     return ret;
+}
+
+int darraySort(DArray *thiz, SortFunc sort, DataCompareFunc cmp)
+{
+    return_val_if_fail(thiz != NULL && sort != NULL && cmp != NULL, ERROR);
+    return sort(thiz->data, thiz->size, cmp);
 }
 

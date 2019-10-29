@@ -257,3 +257,28 @@ int string_trim(char s[])
 
     return (int) i;
 }
+
+//字符串分割函数，将结果存入dest中
+//此函数会修改s里面的数据，用的时候请注意
+//注意：传入的s尽量是从堆里面分配的内存，否则会引发段错误
+void string_split(char s[], const char *sep, char **dest, int *num)
+{
+    char *p_next;
+    int count = 0;
+    if (s == NULL || strlen(s) == 0) {
+        return;
+    }
+
+    if (sep == NULL || strlen(sep) == 0) {
+        return;
+    }
+
+    p_next = (char *) strtok(s, sep);
+    while (p_next != NULL) {
+        *dest++ = p_next;
+        ++count;
+        p_next = (char *) strtok(NULL, sep);
+    }
+
+    *num = count;
+}

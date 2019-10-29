@@ -6,7 +6,7 @@
 
 //字典树实现
 //利用字符串检索、存储，以及词频统计
-//
+//比较耗内存
 
 #ifndef TIGER_TRIE_H
 #define TIGER_TRIE_H
@@ -36,7 +36,7 @@ typedef struct _TrieNode
 typedef TrieNode *TrieTree;
 
 TrieTree trieTreeCreate();
-TrieTree trieTreeRelease(TrieTree tree);
+void trieTreeRelease(TrieTree tree);
 
 void insertString(TrieTree tree, const char *s);
 BOOL searchString(TrieTree tree, const char *s);

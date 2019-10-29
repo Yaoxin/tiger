@@ -46,7 +46,7 @@ TrieTree trieTreeCreate()
     return _createNode(' ');
 }
 
-TrieTree trieTreeRelease(TrieTree tree)
+void trieTreeRelease(TrieTree tree)
 {
     _deleteNode(tree);
 }

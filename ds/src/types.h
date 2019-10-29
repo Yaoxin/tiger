@@ -39,6 +39,7 @@ extern "C" {
 typedef void (*DataDestroyFunc)(void *ctx, void *data);
 typedef int (*DataCompareFunc)(void *ctx, void *data);
 typedef int (*DataVisitFunc)(void *ctx, void *data);
+typedef int (*SortFunc)(void **array, size_t nr, DataCompareFunc cmp);
 
 #define return_if_fail(p) if(!(p)) \
     {printf("%s:%d Warning: "#p" failed.\n", \
